@@ -1,31 +1,39 @@
-// SPDX-License-Identifier: Apache-2.0
-//! SigmaOS-auditd - Missing OS component for SigmaOS
-//! Part of SigmaOS multi-repository architecture
+//! SigmaOS-auditd - SigmaOS Component
+//!
+//! Development and system tools for SigmaOS.
 
-#![no_std]
+use anyhow::Result;
+use log::info;
+use serde::{Deserialize, Serialize};
 
-/// Component struct
-pub struct Component {
-    name: &'static str,
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct Config {
+    pub enabled: bool,
+    pub auto_start: bool,
 }
 
-impl Component {
-    pub fn new() -> Self {
-        Self { name: "SigmaOS Component" }
-    }
-}
-
-impl Default for Component {
+impl Default for Config {
     fn default() -> Self {
-        Self::new()
+        Self { enabled: true, auto_start: true }
     }
 }
 
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn test_creation() {
-        let c = super::Component::new();
-        assert_eq!(c.name, "SigmaOS Component");
+pub struct auditd {
+    config: Config,
+}
+
+impl auditd {
+    pub fn new(config: Config) -> Self {
+        Self { config }
+    }
+
+    pub fn initialize(&mut self) -> Result<()> {
+        info!("Initializing SigmaOS-auditd");
+        Ok(())
+    }
+
+    pub fn run(&mut self) -> Result<()> {
+        info!("Running SigmaOS-auditd");
+        Ok(())
     }
 }
