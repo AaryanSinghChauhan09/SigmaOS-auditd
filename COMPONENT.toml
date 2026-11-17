@@ -3,7 +3,7 @@ name = "SigmaOS-auditd"
 tier = 2
 stability = "scaffold"
 language = "rust"
-description = "auditd component"
+description = "No GitHub description is set; component scope remains unclassified."
 upstream = []
 
 [contract]
