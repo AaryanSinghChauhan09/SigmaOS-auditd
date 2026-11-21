@@ -1,5 +1,8 @@
 //! SigmaOS-auditd: Linux audit daemon model.
 
+/// System audit daemon module.
+pub mod sigmait;
+
 use std::collections::BTreeMap;
 use std::fmt;
 
